@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  
+  <!-- web.xml (배포 서술자)
+  	   Server 가 켜지자마자 프로그램 파일 중 제일 처음 읽는 문서
+   -->
+    
+  <display-name>ServletProject</display-name>
+  
+  <!-- 메인페이지로 사용할 파일명 목록 (webApp 폴더에 파일이 생성해야함) -->
+  <welcome-file-list> 
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 특정 클래스를 Servlet으로 등록하고 이름을 지정하는 태그 -->
+  <servlet>
+  
+  	<!-- 등록할 Servlet을 지칭할 명칭(별칭) -->
+  	<servlet-name>ex1</servlet-name>
+  	
+  	<!-- Servlet으로 등록할 클래스의 패키지명.클래스명 -->
+  	<servlet-class>edu.kh.servlet.contorller.ExampleContorller1</servlet-class>
+  	
+  </servlet>
+  
+  <!-- 요청 주소를 처리할 Servlet 연결 -->
+  <servlet-mapping>
+  	<servlet-name>ex1</servlet-name>
+  	
+  	<!-- 연결할 요청 주소 -->
+  	<url-pattern>/example1</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servlet 프로젝트</title>
+</head>
+<body>
+  <h1>신명하</h1>
+  <h2>index 또는 default라는 이름의 html, jsp, htm 파일은 메인페이지 역할을 한다!</h2>
+  <h3>web.xml에 의해서.. (배포 서술자)</h3>
+
+  <hr>
+  
+  <h1>서버 제출 테스트1</h1>
+  <pre>
+  	이름과 나이를 입력받아서 서버(Java 코드)로 제출
+  	
+  	* 준비물 *
+  	
+  	1) form 태그 : 내부에 작성된 input 값을 지정된 경로로 제출
+  	- action : 제출할 경로
+  	- method : 제출 방법(GET/POST) 기본값 : GET
+  	
+  	제출 == 클라이언트가 서버로 요청
+  	
+  	2) input 태그 : 값을 입력하는 양식을 제공
+  	- name (*중요*) : 서버로 제출 시 key 역할
+	  - value or 입력된 값 : 서버로 제출시 value 역할
+	
+	<!-- <input name="inputName" value="홍길동"> -->
+	  ?inputName=홍길동
+	
+    ** GET : GET을 통한 요청은 URL 주소 끝에 파라미터로 포함되어 전송되며,
+    이 부분을 query String 이라고 부른다.
+    방식은 URL 끝에 "?" 를 붙이고 그 다음 변수명1=값1, 여러개면 변수명1=값1&변수명2=값2...
+    ex) www.example.com/?name1=value1&name2=value2...
+    -> 서버에서는 name1과 name2라는 파라미터 명으로 
+      각각 value1과 value2 값을 전달받을 수 있다.
+
+     [장점]
+     - 단순함
+     - 캐싱 가능 (주소 저장 == 북마크, 즐겨찾기, 주소 공유)
+
+     [단점]
+     - 보안에 취약하다(요청데이터가 주소에 그대로 노출됨)
+     - 요청데이터의 길이 제한이 있다.
+  </pre>
+
+  <form action="/example1" method="get">
+    이름 : <input name="inputName">
+    <br>
+    나이 : <input type="number" name="inputAge">
+    <br>
+    <button type="submit">서버로 제출하기(== 요청하기)</button>
+  </form>
+  
+  <hr>
+
+  <h1>POST 방식 요청 및 응답</h1>
+
+  <pre>
+    GET 방식과는 다르게
+    전달되는 값을 주소가 아닌
+    HTTP Body (요청 본문)에 담아서 전달하는 방식
+
+    [장점]
+    - 데이터를 숨겨서 전달 (보안성 향상)
+    - 길이 제한 X 
+
+    [단점]
+    - 캐싱 불가능
+    - 서버에서 추가적인 문자 인코딩 처리 필요(tomcat 10 부터 해당 문제 해결되었음)
+    - tomcat 9 : req.setCharacterEncoding("UTF-8"); -> 할 필요 없다
+  </pre>
+
+  <h3>회원가입</h3>
+
+  <form action="/signup" method="post" >
+    아이디 : <input type="text" name="inputId" required> <br>
+    비밀번호 : <input type="password" name="inputPw" required> <br> 
+    비밀번호 확인 : <input type="password"> <br>
+    이름 : <input name="inputName" required> <br>
+    
+    자기소개 <br>
+    <textarea name="intro" cols="50" rows="5"></textarea>
+
+    <button>회원가입</button>
+  </form>
+  
+  <hr>
+  
+  <h1>커피 주문하기</h1>
+  
+  <form action="/coffee" method="get">
+  	주문자 : <input name="orderer">
+  	<br>
+  	
+  	커피 : <select name="coffee">
+  			<option>아메리카노</option>
+  			<option>카페라떼</option>
+  			<option>카푸치노</option>
+  			<option>콜드브루</option>
+  			<option>민트초코칩프라페</option>
+  		   </select> 
+  		   
+  		   <br><br>
+  		   
+  		   ICE <input type="radio" name="type" value="ice"> <!-- type가 radio인데 name이 type로 같으면 둘 중 하나만 체크 가능 -->
+  		   HOT <input type="radio" name="type" value="hot">
+  		   
+  		   <br><br>
+  		   
+  		   옵션<br>
+  		   샷 추가<input type="checkbox" name="opt" value="shot"> 
+  		   <br>
+  		   연하게 <input type="checkbox" name="opt" value="mild">
+  		   
+  		   <br><br>
+  		   <button>주문하기</button>
+  </form>
+
+</body>
+</html>
