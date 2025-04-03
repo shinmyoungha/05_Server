@@ -27,14 +27,15 @@
 	
 	</h3>
 	
-	<%= request.getParameter("opt") %>
+	<%= request.getParameterValues("opt") %>
 	
-	<% if(request.getParameter("opt") != null) %>
+	<% if(request.getParameterValues("opt") != null) {%>
 	<ul>
-		<% for(String opt : request.getParameter("opt")) { %>
-			<li><% opt %></li>
+		<% for(String opt : request.getParameterValues("opt")) { %>
+			<li><%= opt %></li>
 		<% } %>
 	</ul>
+<% } %>
 
 </body>
 </html>

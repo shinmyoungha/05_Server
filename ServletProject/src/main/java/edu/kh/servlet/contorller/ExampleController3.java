@@ -34,8 +34,11 @@ public class ExampleController3 extends HttpServlet {
 		System.out.println(option);
 		System.out.println(optionArr); // 주소값 출력
 		
-		for(String opt : optionArr) {
-			System.out.println(opt);
+		// opt 미선택시 optionArr == null
+		if(optionArr != null) {
+			for(String opt : optionArr) {
+				System.out.println(opt);
+			}
 		}
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/result2.jsp");
