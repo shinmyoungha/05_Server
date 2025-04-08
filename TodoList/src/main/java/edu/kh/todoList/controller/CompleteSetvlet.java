@@ -43,7 +43,7 @@ public class CompleteSetvlet extends HttpServlet{
 			// 변경 실패 시 
 			// -> 메인페이지로 redirect
 			// -> message "todo가 존재하지 않습니다!" alert
-			session.setAttribute("mession", "todo가 존재하지 않습니다");
+			session.setAttribute("message", "todo가 존재하지 않습니다");
 			resp.sendRedirect("/");
 			
 			

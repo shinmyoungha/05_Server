@@ -27,5 +27,11 @@ completeBtn.addEventListener("click", () => {
 });
 
 // 삭제 버튼
+const  deleteBtn = document.querySelector("#deleteBtn");
+deleteBtn.addEventListener("click", () => {
+
+  location.href = "/todo/delete?todoNo=" - todoNo;
+});
+
 // 수정 버튼
 
