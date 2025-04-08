@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
+	
 	<!-- sql 작성 -->
+	
+	<!-- 할 일 전체 조회 -->
+	<entry key="todoListFullView">
+		SELECT 
+		TODO_NO, 
+		TODO_TITLE, 
+		TODO_COMPLETE,
+		TO_CHAR(REG_DATE, 'YYYY-MM-DD HH24:MI:SS') REG_DATE
+		FROM TB_TODO 
+		ORDER BY TODO_NO ASC
+	</entry>
+		
+	<!-- 완료된 할 일 개수 조회 -->	
+	<entry key="getCompleteCount">
+		SELECT COUNT(*)
+		FROM TB_TODO
+		WHERE TODO_COMPLETE = 1
+	</entry>
+	
+	<!-- 할 일 추가 -->
+	<entry key="todoAdd">
+		INSERT INTO TB_TODO
+		VALUES(SEQ_TODO_NO.NEXTVAL, ?, ?, DEFAULT, DEFAULT)
+	</entry>	
+		
+	<!-- 할 일 상세 조회 -->	
+	<entry key="todoDetail">
+		SELECT TODO_NO, 
+		TODO_TITLE, 
+		TODO_DETAIL,
+		TODO_COMPLETE, 
+		TO_CHAR(REG_DATE, 'YYYY-MM-DD HH24:MI:SS') REG_DATE
+		FROM TB_TODO
+		WHERE TODO_NO = ?
+	</entry>
+		
+	<!-- 완료 여부 변경 -->
+	<entry key="todoComplete">
+		UPDATE TB_TODO
+		SET TODO_COMPLETE = DECODE(TODO_COMPLETE, 0, 1, 0)
+		WHERE TODO_NO = ?	
+	</entry>
+		
+		
+		
+		
+		
+		
 	
 </properties>
