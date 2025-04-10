@@ -14,6 +14,22 @@
 </head>
 <body>
 
+	<c:if test="${empty seesionScope.loginMember}">
+		<form action="/login" method="post">
+			아이디 : <input type = "text" name="userId"> <br>
+			비밀번호 :  <input type = "password" name="userPw"> <br>
+			<button>로그인</button>
+		</form>
+	</c:if>
+	
+	<c:if test="${not empty seesionScope.loginMember}">
+		<p>${seesionScope.loginMember} 환영합니다!</p>
+	</c:if>
+	
+	<button type="button" id="logout">로그아웃</button>
+	
+	
+	
 	<h1>Todo List</h1>
 	
 	<h3>전체 Todo 개수 : ${fn:length(todoList)}개 / 

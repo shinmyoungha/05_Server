@@ -39,13 +39,26 @@
 		WHERE TODO_NO = ?
 	</entry>
 		
-	<!-- 완료 여부 변경 -->
+	<!-- 완료 여부 변경 -->	
 	<entry key="todoComplete">
 		UPDATE TB_TODO
 		SET TODO_COMPLETE = DECODE(TODO_COMPLETE, 0, 1, 0)
-		WHERE TODO_NO = ?	
-	</entry>
+		WHERE TODO_NO = ?
+	</entry>	
 		
+	<!-- 할 일 삭제 -->	
+	<entry key="todoDelete">
+		DELETE FROM TB_TODO
+		WHERE TODO_NO = ?
+	</entry>
+	
+	<!--  할 일 수정 -->
+	<entry key="todoUpdate">
+		UPDATE TB_TODO
+		SET TODO_TITLE = ?,
+			TODO_DETAIL = ?
+		WHERE TODO_NO = ?
+	</entry>
 		
 		
 		
